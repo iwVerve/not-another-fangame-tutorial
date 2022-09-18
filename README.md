@@ -1,5 +1,8 @@
 # not another fangame tutorial
- 
+
+Data repository for the I Wanna Community tutorial modernization efforts.
+Discussion about the plans is best done in the Discord thread.
+
 ## Gamemaking Intro Topic List
 
 1. Setup
@@ -60,3 +63,7 @@
    3. [GMShaders](https://gmshaders.com/).
    4. Something on particles, [Crystalline](https://iwannacommunity.com/forum/index.php@topic=1353.0.html), [CrystallineJS](https://iwverve.github.io/crystalline/).
    5. Something on data structures.
+
+## Miscellaneous articles
+
+- State machines
