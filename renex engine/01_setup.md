@@ -10,11 +10,13 @@ This will setup the program's files in a couple places, specifically in `%appdat
 It will also leave a shortcut on your desktop, as well as leave some remaining files in the installer folder. These will not be used for anything, you can delete them.
 
 After opening GameMaker 8.2, you should see an empty project screen similar to the screenshot. We won't do anything more in GameMaker just yet.
+
 ![Empty GameMaker 8.2 project](img/01_empty_project.png)
 
 ## Getting renex engine
 renex engine is a fangame engine made for GameMaker 8.2. It is what provides you all the fangame essentials, the physics, game systems like saving, etc.
 It is downloaded from its [GitHub page](https://github.com/omicronrex/renex-engine). To download the project, find the download ZIP button in the green Code dropdown.
+
 ![GitHub screenshot](img/01_renex_engine_github.png)
 
 In the downloaded engine folder are 2 more folders - both the source and data folders are important parts to keep, everything else isn't necessary.
@@ -24,8 +26,10 @@ renex engine updates often, and as such when starting a new project it is recomm
 ## Opening the engine
 Your project folder should contain a source folder and a data folder. The data folder contains all files that the stores externally. Without going into what that means, this is where your game's music is stored. The source folder contains everything else, including the GameMaker 8.2 project file - `renex engine.gm82`.
 
-You can open that file, and it should open in GameMaker, or you can open GameMaker, and open the engine from there by pressing File -> Open..., and selecting the same project file.
+You can open that file, and it should open in GameMaker `[TODO: I don't know if this is true lol does the installer set filetype associations?]`, or you can open GameMaker, and open the engine from there by pressing File -> Open..., and selecting the same project file.
 
 An opened project at first doesn't look much different from an empty one, you should however see some arrows next to the folders in the left sidebar, indicating those folders contain the game assets.
 
 The next section will start explaining features of the GameMaker software itself, and we will look at features of renex engine later.
+
+Next: [GameMaker 8.2 Overview](02_gamemaker_overview.md)
