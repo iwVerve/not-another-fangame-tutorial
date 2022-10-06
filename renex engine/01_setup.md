@@ -3,7 +3,7 @@ To start making a fangame, you'll need to download the right tools. This tutoria
 
 ## Getting GameMaker 8.2
 GameMaker 8.2 is a community made modification of GameMaker 8.1.
-The download link is available in the [gm82 Discord server](https://discord.gg/p7GpvPNUmc), at the top of the #roadmap channel.
+The download link is available in the [gm82 Discord server](https://discord.gg/CMZKMS4NHM), at the top of the #roadmap channel.
 
 When you download the linked game maker 8.2.7z file, extract the entire thing into a folder. In that folder, run install.bat.
 This will setup the program's files in a couple places, specifically in `%appdata%\GameMaker8.2` and `%localappdata%\GameMaker8.2`.
