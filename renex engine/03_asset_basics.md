@@ -30,11 +30,12 @@ First time you launch the Room Editor you'll get quick guide.
 
 ### Creating your first Room
 
-Creating a room is simple. Firstly, in asset browser you Duplicate rmTemplate (You can find it in "Game" folder under "Rooms"). After duplicating you can rename the room however you like and double-click to open.
+Creating a room is simple. Firstly, in asset browser you Duplicate `rmTemplate` (You can find it under `Rooms/Game` in Asset Tree).
 
 ![](img/03_room_duplicate.png)
 
-From there you will see a couple of items shown in the left panel, that, you guessed it, you can put in a room. Usually template room also has `Autotiler` object placed near the top-left corner. While it is useful, It is outside of scope of this tutorial to teach how to use it (complicated), so you should just delete it. Instead, open Tiles tab in top-left corner of the window, click on gray bar to select backgroud to choose tiles from, then on button "Add Tiles..." on the panel to add tiles from this background. Select area for a __single__ tile you want to add to your palette, add all tiles you need. Place tiles behind `Block` objects. Feel free to go back to instance tab and add all objects you like (good ol' spikes for example). Remember that you can add more objects to your palette the same way you added tiles. Feel free experimenting with objects, there should not be any hard or complicated stuff with these. If you want to change background for the room, open Background tab, click on gray bar and select background you want. Time to test how things are looking!
+After duplicating you can rename the room however you like and double-click to open.
+From there you will see a couple of items shown in the left panel, that, you guessed it, you can put in the room. Usually template room also has `Autotiler` object placed near the top-left corner. While it is useful, it is outside of the scope of this tutorial to teach how to use it (it's complicated), so you should just delete it for now. Instead, open Tiles tab in top-left corner of the window, click on gray bar to select backgroud to choose tiles from, then on button "Add Tiles..." on the panel to add tiles from this background. Select area for a __single__ tile you want to add to your palette, do the same to add all tiles you need. Place tiles behind `Block` objects. Feel free to go back to instance tab and add all objects you like (good ol' spikes for example). Remember that you can add more objects to your palette the same way you added tiles. Feel free to experiment with objects, there should not be any kind of hard or complicated stuff with these. If you want to change background for the room, open Background tab, click on gray bar and select background you want. Time to test how the things are looking!
 
 Firstly, we need to tell the engine to use our new room as the "start of the game". This might look scary since you'll have to open certain script and edit one line of code in it, but no worries. Open engine_settings script (see the picture) and edit this specific line to use the name of your room instead of whatever there is by default (see the second picture)
 
@@ -43,7 +44,7 @@ Firstly, we need to tell the engine to use our new room as the "start of the gam
 
 After that is done, you should be able to hit the green "Run test build" button (or just pressing `F5`) and after going through menus you'll see your room in its full glory!
 
-Finally, let's see how to change the music of this room to something else. Assuming you know how to add music to your game (see latter chapters on that). Open your room, find the `MusicPlayer` object in the top-left corner of the room (looks like a piece of paper with a note drawn on it) and click on its bottom-left corner to open it's fields. 
+Finally, let's see how to change the music of this room to something else. Assuming you know how to add music to your game (see latter chapters on that). Open your room, find the `MusicPlayer` object in the top-left corner of the room (looks like a piece of paper with a note drawn on it) and click on its bottom-left corner to open it's fields.
 
 ![](img/03_room_fields.png)
 
