@@ -60,7 +60,7 @@ After that is done, you should be able to hit the green "Run test build" button 
 
 `[TODO: verve review these changes below]`
 
-Finally, let's see how to change the music being played in this room. It is controlled by `MusicPlayer` object, which you should find in top-left corner of room. If you hover over it with your mouse, you'll see that it has a "field" which says "BGM: Seasons". You can click on bottom-left corner of the object to edit it's fields. We will talk about adding your own music a bit later, for now you can use one of the example tracks, like `barnicle`. Change the field so it looks like this:
+Finally, let's see how to change the music being played in this room. It is controlled by `MusicPlayer` object, which you may find in top-left corner of room. If you hover over it with your mouse, you'll see that it has a "field" which says "BGM: Seasons". You can click on bottom-left corner of the object to edit it's fields. We will talk about adding your own music a bit later, for now you can use one of the example tracks, like `barnicle`. Change the field so it looks like this:
 
 ![](img/03_room_fields2.png)
 
@@ -68,7 +68,8 @@ Feel free to launch your game and see the new music in action.
 
 That concludes the basic room tutorial. You can always go around and experiment, but it is also recommended to look at other chapters for general knowledge.
 
-`[TODO: review the rest]`
+`[TODO: review the rest. there is a lot of information repition left from room tutorial that is like ugh,,,`
+`idk if can be removed (since one may probably just look up the chapter to quickly see the answer)]`
 
 ### Instances
 Instances are, basically, instances of certain objects in the room.
@@ -82,7 +83,7 @@ In the top bar you can find two number input fields. Those control grid snap. On
 For rotating instances you have 15 degrees snap, also can be turned off with `Alt`.
 
 ### Tiles
-You can place tiles in a room. The process of adding and placing tiles in your room was discussed in Creating your first room part. Alternatively, renex engine provides `AutoTiler` object, which can automatically put right tiles on top of `Block` instances in the room, but the setup is too complicated for this chapter, you may find info about it later. `[TODO: right?]` `[TODO: possibly tell how to use tiles for static props or too advanced?]`
+You can place tiles in a room. The process of adding and placing tiles in your room was discussed in Creating your first room part`[TODO: link to the ]`. Alternatively, renex engine provides `AutoTiler` object, which can automatically put right tiles on top of `Block` instances in the room, but the setup is too complicated for this chapter, you may find info about it later. `[TODO: right?]` `[TODO: possibly tell how to use tiles for static props or too advanced?]`
 
 ### Backgrounds
 You can have backgrounds in room, up to 8 of them (see in Backgrounds tab of room editor, there are 8 buttons from 0 to 7). Each background possibly has a solid Colour and possibly has a Background asset to render above it. You can set it up in Background tab of Room Editor. There are options for drawing it tiled or stretched, also for offset and move speed. Background also can be drawn on foreground layer (above everything else). 
@@ -102,8 +103,6 @@ Here is a little breakdown of all of them.
 Sprite usually is an image that object can use as appearance. 
 * Sprites can have several subimages (frames) in them so you can make simple animations. 
 * Sprites can have transparency in them, as well as they can be used for collision detection between objects based on non-transparent pixels (when used by objects as Masks). 
-* Double-clicking a sprite in asset tree will open Sprite Properties window. 
-* Double-clicking on sprite displayed in this window will open up individual subimages. 
 * Animations are done through setting __instance's__ `image_speed` to the amount of animation to progress each frame (so if the value is 1/5 then each 5 frames it will transition to the next sprite subimage). 
 * Each sprite also has an origin point. To put simply, when instance uses this sprite, sprite will be placed so the origin point matches to instance's coordinates.
 
@@ -114,17 +113,20 @@ Creating sprite or double-clicking existing one in asset tree will open Sprite P
 
 You may find here quite obscure looking Collision Checking options, here is explanation of what they do:
 * Precise collision checking: If this option is on, collision with this sprite will be pixel-perfect. Otherwise it'll check only bounding box of the sprite.
-* Separate collision masks: If this option is on and sprite has more than 1 subimage, then collision mask will match the current subimage, instead of using one mask that consists of all subimages grouped on top of eachother. 
-* Modify masks button: You can directly edit the sprite's mask. Although, if you want an object to have one thing as a sprite and other as a mask, it is better to make two different sprites for it.
+* Separate collision masks: If this option is on and sprite has more than 1 subimage, then collision mask will match the current subimage, instead of using one mask that consists of all subimages grouped on top of each other. 
+* Modify masks: You can directly edit the sprite's mask. Although, if you want an object to have one thing as a sprite and other as a mask, it is better to make two different sprites for it.
 
 If you press on "Edit Sprite" button, then it will open Sprite Edit window:
 
 ![](img/03_sprite_edit_window.png)
 
-From here you can add, delete or edit each individual subimage of the sprite (double-click to edit), change their order, save one to PNG or read one from file, as well as preview sprite animation by using "Show preview" checkbox. More image manipulations are available in image editor or in menu options. They should be quite straght-forward to use.
+From here you can add, delete or edit each individual subimage of the sprite, change their order, save one to PNG or read one from file, as well as preview sprite animation by using "Show preview" checkbox. More image manipulations are available in image editor or in menu options. They should be quite straght-forward to use.
 
 ## Backgrounds - tilesets
-Backgrounds are images that are simply drawn to the screen. They are used in mainly two ways: Tilesets or Actually room backgrounds. Backgrounds cannot be animated and don't have collision. You can also use backgrounds for various props in your room. Using Background as room background was discussed previously, in order to use it as tileset you should also check the "Use as Tileset" checkbox in Background's properties and set up the size of each tile. Other options are useful only if your tiles are not tightly packed together and have space around them. In order to use background as a static prop, in Room Editor you open Tiles tab, add this background as tile, select whole area as tile region. Now you can place the prop.
+Backgrounds are images that are simply drawn to the screen. They are used in mainly two ways: Tilesets or Actually room backgrounds. Backgrounds cannot be animated and don't have collision. You can also use backgrounds for various props in your room. Using Background as room background was discussed previously, in order to use it as tileset you should also check the "Use as Tileset" checkbox in Background's properties and set up the size of each tile. Other options are useful only if your tiles are not tightly packed together and have space around them. 
+
+`[TODO: move or remove (or not do anything) with this guide on how to prop]`
+In order to use background as a static prop, in Room Editor you open Tiles tab, add this background as tile, select whole area as tile region. Now you can place the prop.
 
 ### Background Properties
 Creating background or double-clicking existing one will open Background Properties window. From here you can: 
