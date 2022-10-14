@@ -99,14 +99,20 @@ Here is a little breakdown of all of them.
 * Room code (optional): Custom code to execute when room loads.
 
 ## Sprites - animations, origin
-Sprite usually is a small image that objects use as their appearance. Sprites can have several subimages (frames) in them so you can make simple animations, sprites can have transparency in them, as well as they can be used for collision detection between objects based on non-transparent pixels (when used by objects as Masks). Editing a sprite, you will find several properties as well as the sprite itself. Double-clicking on it will open up individual subimages. Animation is done through setting __instance's__ `image_speed` to the amount of animation to progress each frame (so if the value is 1/5 then each 5 frames it will transition to the next sprite subimage). Each sprite also has an origin point. To put simply, when instance uses this sprite, sprite will be placed so the origin point matches to instance's coordinates.
+Sprite usually is an image that object can use as appearance. 
+* Sprites can have several subimages (frames) in them so you can make simple animations. 
+* Sprites can have transparency in them, as well as they can be used for collision detection between objects based on non-transparent pixels (when used by objects as Masks). 
+* Double-clicking a sprite in asset tree will open Sprite Properties window. 
+* Double-clicking on sprite displayed in this window will open up individual subimages. 
+* Animations are done through setting __instance's__ `image_speed` to the amount of animation to progress each frame (so if the value is 1/5 then each 5 frames it will transition to the next sprite subimage). 
+* Each sprite also has an origin point. To put simply, when instance uses this sprite, sprite will be placed so the origin point matches to instance's coordinates.
 
-### Creating Sprite
-You can create new sprite by either right-clicking on "Sprites" folder in the asset tree -> "Create Sprite" or pressing "Create a sprite" button in top bar (looks like red pacman). Creating sprite or double-clicking existing one in asset tree will open Sprite Properties window:
+### Sprite Properties
+Creating sprite or double-clicking existing one in asset tree will open Sprite Properties window:
 
 ![](img/03_sprite_window.png)
 
-You may find here Collision Checking options, here is explanation what they do:
+You may find here quite obscure looking Collision Checking options, here is explanation of what they do:
 * Precise collision checking: If this option is on, collision with this sprite will be pixel-perfect. Otherwise it'll check only bounding box of the sprite.
 * Separate collision masks: If this option is on and sprite has more than 1 subimage, then collision mask will match the current subimage, instead of using one mask that consists of all subimages grouped on top of eachother. 
 * Modify masks button: You can directly edit the sprite's mask. Although, if you want an object to have one thing as a sprite and other as a mask, it is better to make two different sprites for it.
@@ -120,10 +126,10 @@ From here you can add, delete or edit each individual subimage of the sprite (do
 ## Backgrounds - tilesets
 Backgrounds are images that are simply drawn to the screen. They are used in mainly two ways: Tilesets or Actually room backgrounds. Backgrounds cannot be animated and don't have collision. You can also use backgrounds for various props in your room. Using Background as room background was discussed previously, in order to use it as tileset you should also check the "Use as Tileset" checkbox in Background's properties and set up the size of each tile. Other options are useful only if your tiles are not tightly packed together and have space around them. In order to use background as a static prop, in Room Editor you open Tiles tab, add this background as tile, select whole area as tile region. Now you can place the prop.
 
-### Creating Background
-The process is similar to (and more straight-forward than) creating sprites. Right-click on "Backgrounds" folder of Asset Tree or click on "Create Background" button in top bar (looks like an image icon). Creating background or double-clicking existing one will open Background Properties window. From here you can 
-* Load background from BMP, GIF, JPG, PNG or Game Maker Background format with all Background properties stored in it
-* Save background to Game Maker Background format
+### Background Properties
+Creating background or double-clicking existing one will open Background Properties window. From here you can: 
+* Load background from BMP, GIF, JPG, PNG or Game Maker Background format.
+* Save background to Game Maker Background format with all Background properties saved in it.
 * Edit background. This will open image editor, from where you also can save background as PNG.
 
 To use background as tileset, tick the checkbox "Use as tile set" and fill in "tile width" and "tile height" options in opened panel.
