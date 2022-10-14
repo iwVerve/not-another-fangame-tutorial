@@ -1,48 +1,64 @@
 # Asset Basics
 Assets are various things you can use in your game. 
 
-## Very simplified Basic Assets structure explanation
-* Sprites are small images that can have multiple subimages for simple animations and can be used for collision detection.
-* Sounds are sounds. You can play them and apply effects to them. 
-* Backgrounds are big images that can be used as, well, room backgrounds or tilesets. Also can be used for drawing simple static props (aka decorations)
-* Objects are most things in the game. For example, `Player`, `Cherry`, `Warp` - these are all objects. Objects have Sprite, collision mask (also Sprite), events as well as actions (such as executing some code) triggered by those events.
-* Rooms contain instances of Objects, some background behind them and tiles. Only one room loaded at a time.
+## Overview of the most basic GameMaker assets
+* Sprites are most of the images in your game. They can be animated, and have an associated collision hitbox.
+* Sounds are sounds. These are used by GameMaker's audio engine, which renex engine doesn't use - instead, sound files are stored in the `data` folder, next to the engine `source` folder.
+* Backgrounds are big images that can be used as, well, room backgrounds or tilesets.
+* Objects are the things that make up your game - they exist somewhere in the current room, and they run their logic. For example, `Player`, `Cherry`, `Warp`, etc. are all objects. The individual things that then exist in your game are called instances of objects, so for example, a room may have many Blocks in it - these are different instances of one object. This is a small distinction, but it's worth noting.
+* Rooms are where your game takes place - you are always in one, e.g. starting your game always puts you in the very first room in the Rooms folder. They contain object instances and tiles, and they can have backgrounds.
 
 ## Asset Tree
 Assets are located in the asset tree:
 
 ![](img/03_asset_tree.png)
 
-Most assets can be created by right-clicking respective folder -> "Create ..." or by clicking respective button in the top bar:
+Most assets can be created by right-clicking the respective folder -> "Create ..." or by clicking the corresponding button in the top bar:
 
 ![](img/03_buttons.png)
 
-Each asset has a name and can be dragged around in asset tree. You can also group assets in subfolders by right clicking in the tree and selecting "Create group". Order of things in asset browser usually have no impact on other things. If you are not sure, put your assets after those which came with engine.
+Each asset has a name and can be dragged around in the asset tree. You can also group assets in subfolders by right clicking in the tree and selecting "Create group".
 
 ## Room Editor
-Game Maker 8.2 comes with brand new Room Editor, also known as gm82room. It is easier to work with than legacy editor and has support for few very handy features. Here is how it is supposed to look:
+GameMaker 8.2 comes with two room editors - the classic GameMaker 8 editor, and a new one made for 8.2, commonly referred to as gm82room. You can switch between the two editors in the far right button on the top button bar, in the File dropdown, or in GameMaker preferences. You probably won't find yourself needing to use the legacy editor, so we'll only focus on the new one.
+
+gm82room opens in a separate window, as it is a separate program - there isn't a way to edit your project at the same time as you are editing a room. Simply double click any room in the asset tree to open it, here we'll open `rmTemplate` in the `Game` folder.
 
 ![](img/03_room_editor.png)
 
-First time you launch the Room Editor you'll get quick guide. 
+The first time you launch the room editor you'll get a quick guide.
 
 ![](img/03_room_guide.png)
 
 ### Creating your first Room
 
-Creating a room is simple. Firstly, in asset browser you Duplicate `rmTemplate` (You can find it under `Rooms/Game` in Asset Tree).
+Creating a room is simple. Because there are common room settings and objects between most rooms, we don't actually create a brand new room. Instead, make a duplicate of `rmTemplate` by right-clicking the room in the asset tree.
 
 ![](img/03_room_duplicate.png)
 
-After duplicating you can rename the room however you like and double-click to open.
-From there you will see a couple of items shown in the left panel, that, you guessed it, you can put in the room. Usually template room also has `Autotiler` object placed near the top-left corner. While it is useful, it is outside of the scope of this tutorial to teach how to use it (it's complicated), so you should just delete it for now. Instead, open Tiles tab in top-left corner of the window, click on gray bar to select backgroud to choose tiles from, then on button "Add Tiles..." on the panel to add tiles from this background. Select area for a __single__ tile you want to add to your palette, do the same to add all tiles you need. Place tiles behind `Block` objects. Feel free to go back to instance tab and add all objects you like (good ol' spikes for example). Remember that you can add more objects to your palette the same way you added tiles. Feel free to experiment with objects, there should not be any kind of hard or complicated stuff with these. If you want to change background for the room, open Background tab, click on gray bar and select background you want. Time to test how the things are looking!
+After making the new room, you can rename it however you like and double-click it to open.
 
-Firstly, we need to tell the engine to use our new room as the "start of the game". This might look scary since you'll have to open certain script and edit one line of code in it, but no worries. Open engine_settings script (see the picture) and edit this specific line to use the name of your room instead of whatever there is by default (see the second picture)
+The editor has several "modes", selected by the big buttons in the top left corner - you can see the editor opens in the Instances mode. This is where you place and move instances of objects. On the left you have a palette of objects to choose from - these are all objects that already exist in the room. The very last button in the palette is used to select other objects in the project.
+
+You can try dragging some objects around, or stretching some of the Blocks with the square handle at the bottom left of the selected instance.
+
+Some of the objects already present in the template room are `PlayerStart`, which indicates where the Player spawns, the savepoint, a `MusicPlayer` instance that sets the background music for this room, or an `Autotiler` that places tiles in the room to match the Blocks when the room is created. To explain the difference between instances and tiles, we'll place the tiles ourselves, so for now delete the `Autotiler` instance.
+
+Switch to the Tiles tab in the top left corner, and click on the empty gray bar to select a tileset. Click the plus button in the left palette tab to add a new tile. Select a single tile to place (you can drag to select a bigger area, but you most likely don't need to), and press the finish button in the top left. Now you can select that tile from the palette at any point and place it in the room, moving and stretching it just like you can with instances. Place tiles under all of the Blocks in the room - the Blocks won't actually be visible in-game!
+
+Lastly for now, you can switch to the backgrounds tab, and select a background by clicking the empty gray box below the 8 numbered buttons, just like you selected a tileset.
+
+Now we need to tell the engine to use our new room as the start of the game. This might look scary since you'll have to open certain script and edit one line of code in it, but no worries. Open the engine_settings script at the very top of the Scripts folder.
 
 ![](img/03_engine_settings.png)
+
+Now edit this specific line so that `global.first_room` gets set to the new room you just made.
+
 ![](img/03_engine_settings_room.png)
 
-After that is done, you should be able to hit the green "Run test build" button (or just pressing `F5`) and after going through menus you'll see your room in its full glory!
+After that is done, you should be able to hit the green "Run test build" button (or just press `F5`) and after going through the menus you'll see your room in its full glory!
+
+`[TODO: review the rest]`
 
 Finally, let's see how to change the music of this room to something else. Assuming you know how to add music to your game (see latter chapters on that). Open your room, find the `MusicPlayer` object in the top-left corner of the room (looks like a piece of paper with a note drawn on it) and click on its bottom-left corner to open it's fields.
 
