@@ -58,34 +58,37 @@ Now edit this specific line so that `global.first_room` gets set to the new room
 
 After that is done, you should be able to hit the green "Run test build" button (or just press `F5`) and after going through the menus you'll see your room in its full glory!
 
+`[TODO: verve review these changes below]`
+
+Finally, let's see how to change the music being played in this room. It is controlled by `MusicPlayer` object, which you should find in top-left corner of room. If you hover over it with your mouse, you'll see that it has a "field" which says "BGM: Seasons". You can click on bottom-left corner of the object to edit it's fields. We will talk about adding your own music a bit later, for now you can use one of the example tracks, like `barnicle`. Change the field so it looks like this:
+
+![](img/03_room_fields2.png)
+
+Feel free to launch your game and see the new music in action.
+
+That concludes the basic room tutorial. You can always go around and experiment, but it is also recommended to look at other chapters for general knowledge.
+
 `[TODO: review the rest]`
-
-Finally, let's see how to change the music of this room to something else. Assuming you know how to add music to your game (see latter chapters on that). Open your room, find the `MusicPlayer` object in the top-left corner of the room (looks like a piece of paper with a note drawn on it) and click on its bottom-left corner to open it's fields.
-
-![](img/03_room_fields.png)
-
-Click on `BGM` option and change to the file name of the song you want to play. That's it! Feel free to launch your game and see the new music being played. 
-
-That's it for the basic tutorial. You can always go around and experiment a little, but it is also recommended to look at other chapters, just so you know is **not recommended** to do.
 
 ### Instances
 Instances are, basically, instances of certain objects in the room.
-It is important to destinguish between Objects and Instances. For example, every red cherry you see in a room is an instance of the object `Cherry`. Instances tab of Room Editor allows you to place instances of selected object from object palette (panel on the left). One of the features of Room Editor is ability for object to define fields, which allow easier configuration of each instance. You access fields by clicking object's bottom-left corner (where the icon is at) 
+It is important to destinguish between Objects and Instances. For example, every red cherry you see in a room is an instance of the object `Cherry`. Instances tab of Room Editor allows you to place instances of selected object from object palette. One of the features of Room Editor is ability for object to define fields, which allow easier configuration of each instance. You access fields by clicking object's bottom-left corner (where the icon is at) 
 
 ![](img/03_fields.png)
 
 ### Grid snap
-Grid snap allows you to make objects and tiles get snapped to a grid when placing. 
-In the top bar you can find two number input fields. Those control grid snap. One to the left controls grid cell width, one to the right controls grid cell height. As Quick Guide states, you can ignore the snap by pressing `Alt`.
+Grid snap allows you to make objects and tiles get snapped to a grid when placing or resizing. 
+In the top bar you can find two number input fields. Those control grid snap. One to the left controls grid cell width, other controls height. As Quick Guide states, you can ignore the snap by holding `Alt`.
+For rotating instances you have 15 degrees snap, also can be turned off with `Alt`.
 
 ### Tiles
-Backgrounds can be used as tilesets. In Tiles tab of Room Editor you can add tiles to palette and place them. Choose background from where to take tiles, then click on "Add tiles..." button, then select the area that matches the single tile you want to add. Repeat until added all tiles needed. Now you can place them down. Alternatively, renex engine provides auto-tiler, but this won't be discussed in this tutorial, you can examine how it works in rTemplate room and examine the code and tile format behind it. 
+You can place tiles in a room. The process of adding and placing tiles in your room was discussed in Creating your first room part. Alternatively, renex engine provides `AutoTiler` object, which can automatically put right tiles on top of `Block` instances in the room, but the setup is too complicated for this chapter, you may find info about it later. `[TODO: right?]` `[TODO: possibly tell how to use tiles for static props or too advanced?]`
 
 ### Backgrounds
-You can have backgrounds in room, up to 8 of them (see in Backgrounds tab of room editor there are 8 buttons from 0 to 7). Each background possibly has a solid Colour and possibly has a Background asset to render above it. You can set it up in Background tab of Room Editor. There are options for drawing it tiled or stretched, also for offset and move speed. Background also can be drawn on foreground layer (above everything else). 
+You can have backgrounds in room, up to 8 of them (see in Backgrounds tab of room editor, there are 8 buttons from 0 to 7). Each background possibly has a solid Colour and possibly has a Background asset to render above it. You can set it up in Background tab of Room Editor. There are options for drawing it tiled or stretched, also for offset and move speed. Background also can be drawn on foreground layer (above everything else). 
 
 ### Room Settings
-There are multiple room settings available, but you really should touch only one of them: room size.
+There are multiple room settings available, but you really shouldn't touch anything other than room_size. 
 Here is a little breakdown of all of them.
 
 * Caption (optional): Room caption is the window title. Engine sets the caption for you to include title and stats, don't edit this option yourself.
@@ -96,35 +99,30 @@ Here is a little breakdown of all of them.
 * Room code (optional): Custom code to execute when room loads.
 
 ## Sprites - animations, origin
-Sprite is usually small image that objects use as their appearance. Sprites can have several subimages (frames) in them so you can make simple animations, they can have transparency in them, as well as they can be used for collision detection between objects based on non-transparent pixels (when used by objects as masks). Editing a sprite, you will find several properties as well as the sprite itself. Double-clicking on it will open up individual subimages. Animation is done through setting __instance's__ `image_speed` to the amount of animation to progress each frame (so if the value is 1/5 then each 5 frames it will transition to the next animation subimage). Each sprite also has an origin point. To put simply, when instance uses this sprite, sprite will be placed so the origin point matches with instance's coordinates.
+Sprite usually is a small image that objects use as their appearance. Sprites can have several subimages (frames) in them so you can make simple animations, sprites can have transparency in them, as well as they can be used for collision detection between objects based on non-transparent pixels (when used by objects as Masks). Editing a sprite, you will find several properties as well as the sprite itself. Double-clicking on it will open up individual subimages. Animation is done through setting __instance's__ `image_speed` to the amount of animation to progress each frame (so if the value is 1/5 then each 5 frames it will transition to the next sprite subimage). Each sprite also has an origin point. To put simply, when instance uses this sprite, sprite will be placed so the origin point matches to instance's coordinates.
 
 ### Creating Sprite
 You can create new sprite by either right-clicking on "Sprites" folder in the asset tree -> "Create Sprite" or pressing "Create a sprite" button in top bar (looks like red pacman). Creating sprite or double-clicking existing one in asset tree will open Sprite Properties window:
 
 ![](img/03_sprite_window.png)
 
-Let's walk through non-obvious options and what each one does:
-
-1) Sprite name: the same name that will appear in the asset tree and by which you can refer to this sprite in code.
-2) Load sprite from file: You can load sprites from files! You can use BMP, GIF, JPG and PNG sprites, as well as Game Maker Sprite format.
-3) Save sprite into file: You can save sprites into Game Maker Sprite format with all the metadata stored in it. Saving individual subimages is also possible through Sprite Edit window.
-4) Edit sprite button: This one will open Edit Sprite window.
-5) Sprite origin: This setting sets the point relative to the top left corner of the sprite that will be used as sprite origin point. We've already mentioned what it does.
-6) Precise collision checking: If this option is on, the collision with this sprite will be pixel-perfect. Otherwise it'll check only bounding box of the sprite.
-7) Separate collision masks: If this option is on and sprite has more than 1 subimage, then collision mask will match the current subimage, instead of using one mask that consists of all subimages grouped on top of eachother. You can edit more of these by pressing "Modify masks" button, but i doubt you'll ever need it.
+You may find here Collision Checking options, here is explanation what they do:
+* Precise collision checking: If this option is on, collision with this sprite will be pixel-perfect. Otherwise it'll check only bounding box of the sprite.
+* Separate collision masks: If this option is on and sprite has more than 1 subimage, then collision mask will match the current subimage, instead of using one mask that consists of all subimages grouped on top of eachother. 
+* Modify masks button: You can directly edit the sprite's mask. Although, if you want an object to have one thing as a sprite and other as a mask, it is better to make two different sprites for it.
 
 If you press on "Edit Sprite" button, then it will open Sprite Edit window:
 
 ![](img/03_sprite_edit_window.png)
 
-From here you can add, delete or edit each individual subimage of the sprite (double-click to edit), change their order, save one to PNG or read one from file, as well as preview sprite by using "Show preview" checkbox. More image manipulations are available in image editor or in menu options. They should be quite straght-forward to use.
+From here you can add, delete or edit each individual subimage of the sprite (double-click to edit), change their order, save one to PNG or read one from file, as well as preview sprite animation by using "Show preview" checkbox. More image manipulations are available in image editor or in menu options. They should be quite straght-forward to use.
 
 ## Backgrounds - tilesets
 Backgrounds are images that are simply drawn to the screen. They are used in mainly two ways: Tilesets or Actually room backgrounds. Backgrounds cannot be animated and don't have collision. You can also use backgrounds for various props in your room. Using Background as room background was discussed previously, in order to use it as tileset you should also check the "Use as Tileset" checkbox in Background's properties and set up the size of each tile. Other options are useful only if your tiles are not tightly packed together and have space around them. In order to use background as a static prop, in Room Editor you open Tiles tab, add this background as tile, select whole area as tile region. Now you can place the prop.
 
 ### Creating Background
-The process is similar to (and even easier than) creating sprites. Right-click on "Backgrounds" folder of Asset Tree or click on "Create Background" button in top bar (looks like an image icon). Creating background or double-clicking existing one will open Background Properties window. From here you can 
-* Load background from BMP, GIF, JPG, PNG or Game Maker Background format with all metadata stored in it
+The process is similar to (and more straight-forward than) creating sprites. Right-click on "Backgrounds" folder of Asset Tree or click on "Create Background" button in top bar (looks like an image icon). Creating background or double-clicking existing one will open Background Properties window. From here you can 
+* Load background from BMP, GIF, JPG, PNG or Game Maker Background format with all Background properties stored in it
 * Save background to Game Maker Background format
 * Edit background. This will open image editor, from where you also can save background as PNG.
 
@@ -133,12 +131,14 @@ To use background as tileset, tick the checkbox "Use as tile set" and fill in "t
 ## Sounds
 **!IMPORTANT! This section is important!** 
 
-Sounds in Game Maker 8.2 are slightly different than in other Game Maker versions. They operate on built-in Game Maker 8.2 Sound extension, which allows things like lazy-load sounds, sound encryption, effects, and many other things. But you cannot use the legacy Game Maker Sound system: 
+Sounds in Game Maker 8.2 are slightly different than in other Game Maker versions. To play sounds, instead of using Game Maker's built-in sound system, you'd use Game Maker 8.2 Sound extension (which is built-in into Game Maker 8.2 itself, so you don't have to explicitly install it or anything), which allows things like load sounds from files, sound encryption, effects, and many other things. But you cannot use the legacy Game Maker Sound system.
 
 ![](img/03_sound_no.png)
 
 ### Adding Sounds
-In renex engine you add sounds to your project by putting the sound into respective folder (must have either `.mp3`, `.ogg`, `.wav` for sounds, put them into `data/sounds`, and either `.ogg`, `.mp3`, `.mod`, `.s3m` for music, put them into `data/music`).
+In renex engine you add sounds to your project by putting the sound into respective folder:
+* sounds: `data/sounds` - allowed file extensions: `.mp3`, `.ogg`, `.wav`
+* music: `data/music` - allowed file extensions `.ogg`, `.mp3`, `.mod`, `.s3m`
 
 ![](img/03_sound_folder.png)
 
@@ -146,9 +146,14 @@ In renex engine you add sounds to your project by putting the sound into respect
 
 **IMPORTANT**: When you finish with your game and Create Executable, you have to copy the `data` folder together with the exe. Otherwise there will be an error prompting you to do so :-)
 
-To play the sound you use it's file name (WITHOUT file extension). For example, in code:
+Playing sounds with the new system is almost no different than using old one. Just instead of specifying sound asset name you specify sound file name (WITHOUT file extension). For example, in `MusicPlayer` object: (it will play the file "barnicle.mod", which you can find in `data/music`):
+
+![](img/03_room_fields2.png)
+
+or in code (it will play the file "sndBlockChange.ogg", which you can find in `data/sounds`):
 
 ![](img/03_sound_play_example.png)
+
 
 There are plenty of functions to make sounds sound differently, things like pitch, various effects and many more. They are quite advanced but in case you'll need them, there are some info on how to use them: Game Maker 8.2 Sound extension [readme](https://github.com/GM82Project/gm82snd/blob/master/readme.txt)
 
