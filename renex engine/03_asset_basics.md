@@ -102,30 +102,34 @@ Here is a little breakdown of all of them.
 * Clear: Technical setting that clears the screen game window every frame. You don't need to touch this.
 * Room code: Custom code to execute every time the room loads.
 
-`[TODO: review the rest]`
+## Assets
+Now that we know how rooms make up a game, let's go over some of the more  important assets so we can start making more interesting changes and additions.
 
 ## Sprites - animations, origin
-Sprite usually is an image that object can use as appearance. 
-* Sprites can have several subimages (frames) in them so you can make simple animations. 
-* Sprites can have transparency in them, as well as they can be used for collision detection between objects based on non-transparent pixels (when used by objects as Masks). 
-* Animations are done through setting __instance's__ `image_speed` to the amount of animation to progress each frame (so if the value is 1/5 then each 5 frames it will transition to the next sprite subimage). 
-* Each sprite also has an origin point. To put simply, when instance uses this sprite, sprite will be placed so the origin point matches to instance's coordinates.
+Sprites are most of the images in your game. Most commonly, objects are assigned sprites - e.g. the `Cherry` object uses the `sprCherry` sprite.
+
+Sprites can have several subimages (frames) making them play an animation. This animation by default plays at a speed of 1 sprite frame per game frame - its speed is changed on an instance by instance basis, by modifying the `image_speed` variable - something we'll talk about when we get into code.
+
+Each sprite has an origin point - when a sprite is drawn on a certain coordinate, the origin defines how it's drawn relative to that point. This is also the point around which sprites get flipped, e.g. when the player turns left and right.
+
+Finally, sprites carry their own collision data, usually referred to as the collision mask. A sprite can be used as an instance's mask, meaning it's used only as a collision hitbox and not actually visible.
 
 ### Sprite Properties
-Creating sprite or double-clicking existing one in asset tree will open Sprite Properties window:
+Creating a sprite or double-clicking an existing one in the asset tree will bring up the Sprite Properties window:
 
 ![](img/03_sprite_window.png)
 
-You may find here quite obscure looking Collision Checking options, here is explanation of what they do:
-* Precise collision checking: If this option is on, collision with this sprite will be pixel-perfect. Otherwise it'll check only bounding box of the sprite.
-* Separate collision masks: If this option is on and sprite has more than 1 subimage, then collision mask will match the current subimage, instead of using one mask that consists of all subimages grouped on top of each other. 
-* Modify masks: You can directly edit the sprite's mask. Although, if you want an object to have one thing as a sprite and other as a mask, it is better to make two different sprites for it.
+* The precise collision checking checkbox sets whether the collision is pixel-perfect, or just rounded to a rectangle around the sprite. You can see a preview of the mask shape in the Modify Mask window.
+* The separate collision masks checkbox sets whether the collision uses a different hitbox for each frame of animation, or whether all frames get merged into one mask.
+* The Modify Mask window allows you to set how the collision mask gets made for the sprite - you can choose between different shapes, or whether transparent pixels are included in the mask.
 
-If you press on "Edit Sprite" button, then it will open Sprite Edit window:
+The Edit Sprite button opens the sprite editor:
 
 ![](img/03_sprite_edit_window.png)
 
-From here you can add, delete or edit each individual subimage of the sprite, change their order, save one to PNG or read one from file, as well as preview sprite animation by using "Show preview" checkbox. More image manipulations are available in image editor or in menu options. They should be quite straght-forward to use.
+Here you can add, edit or delete individual subimages of the sprite, change their order, add them from a file, as well as preview the sprite animation with the "Show preview" checkbox. You can open each frame to edit it with a simple image editor, or use the effects in the top menu of the window.
+
+`[TODO: review the rest]`
 
 ## Backgrounds - tilesets
 Backgrounds are images that are simply drawn to the screen. They are used in mainly two ways: Tilesets or Actually room backgrounds. Backgrounds cannot be animated and don't have collision. You can also use backgrounds for various props in your room. Using Background as room background was discussed previously, in order to use it as tileset you should also check the "Use as Tileset" checkbox in Background's properties and set up the size of each tile. Other options are useful only if your tiles are not tightly packed together and have space around them. 
