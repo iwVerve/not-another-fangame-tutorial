@@ -58,9 +58,9 @@ Now edit this specific line so that `global.first_room` gets set to the new room
 
 After that is done, you should be able to hit the green "Run test build" button (or just press `F5`) and after going through the menus you'll see your room in its full glory!
 
-`[TODO: verve review these changes below]`
+Finally, let's change the bacgkround music played in this room. It is controlled by `MusicPlayer` object, which you may find in the top-left corner of room. You can click on bottom-left corner of the object to edit its fields. 
 
-Finally, let's see how to change the music being played in this room. It is controlled by `MusicPlayer` object, which you may find in top-left corner of room. If you hover over it with your mouse, you'll see that it has a "field" which says "BGM: Seasons". You can click on bottom-left corner of the object to edit it's fields. We will talk about adding your own music a bit later, for now you can use one of the example tracks, like `barnicle`. Change the field so it looks like this:
+Game music is stored in the data folder next to the engine source folder. We'll go into adding your own music later, for now just use one of the example tracks, like `barnicle`. Change the field so it looks like this - notice how the file extension isn't included in the file name:
 
 ![](img/03_room_fields2.png)
 
@@ -68,36 +68,41 @@ Feel free to launch your game and see the new music in action.
 
 That concludes the basic room tutorial. You can always go around and experiment, but it is also recommended to look at other chapters for general knowledge.
 
-`[TODO: review the rest. there is a lot of information repition left from room tutorial that is like ugh,,,`
-`idk if can be removed (since one may probably just look up the chapter to quickly see the answer)]`
+## Editor modes
+Now that we've used most parts of the editor a little bit, we'll go over everything again in more detail before moving on to the rest of Game Maker.
 
 ### Instances
-Instances are, basically, instances of certain objects in the room.
-It is important to destinguish between Objects and Instances. For example, every red cherry you see in a room is an instance of the object `Cherry`. Instances tab of Room Editor allows you to place instances of selected object from object palette. One of the features of Room Editor is ability for object to define fields, which allow easier configuration of each instance. You access fields by clicking object's bottom-left corner (where the icon is at) 
+The instances tab is where you place instances of objects in your room. Instances run nearly all logic in your game. They are selected in the object palette on the left, using the plus button at the end too add more to the palette from the project.
+
+Instances can be stretched and rotated, and the editor provides features for group selection and manipulation - check the F1 help menu. Objects can also have "fields" - these allow simple configuration of an instance's behavior, where you would have otherwise worked with more complicated code. Fields are accessed with the bottom left icon of a selected instance:
 
 ![](img/03_fields.png)
 
 ### Grid snap
-Grid snap allows you to make objects and tiles get snapped to a grid when placing or resizing. 
-In the top bar you can find two number input fields. Those control grid snap. One to the left controls grid cell width, other controls height. As Quick Guide states, you can ignore the snap by holding `Alt`.
-For rotating instances you have 15 degrees snap, also can be turned off with `Alt`.
+Grid snap keeps all your instances and tiles aligned to a grid when placing or resizing. The size of this grid is controlled by the two text fields in the top bar of the editor. Blocks are most commonly 32px in size, so it makes sense to keep the grid relative to that.
+
+To adjust independently of the grid, you can either hold `Alt` when moving or rotating, or you can use the arrow keys to nudge an instance by a single pixel.
 
 ### Tiles
-You can place tiles in a room. The process of adding and placing tiles in your room was discussed in Creating your first room part`[TODO: link to the ]`. Alternatively, renex engine provides `AutoTiler` object, which can automatically put right tiles on top of `Block` instances in the room, but the setup is too complicated for this chapter, you may find info about it later. `[TODO: right?]` `[TODO: possibly tell how to use tiles for static props or too advanced?]`
+Tiles are, unlike instances, almost purely visual. You first select a tileset, then add tiles to the tile palette. Tiles are placed on tile layers - these are selected or added in the right panel of the editor.
+
+Instead of placing tiles manually, you could use the `AutoTiler` object - we will talk about setting it up later.
 
 ### Backgrounds
-You can have backgrounds in room, up to 8 of them (see in Backgrounds tab of room editor, there are 8 buttons from 0 to 7). Each background possibly has a solid Colour and possibly has a Background asset to render above it. You can set it up in Background tab of Room Editor. There are options for drawing it tiled or stretched, also for offset and move speed. Background also can be drawn on foreground layer (above everything else). 
+In the Backgrounds tab you can set up to 8 room backgrounds.You may also simply set a solid color as the basckground to the room. Backgrounds can be drawn tiled or stretched to fill the room, they can be static or moving, and they can be in the back or in the front.
 
 ### Room Settings
-There are multiple room settings available, but you really shouldn't touch anything other than room_size. 
+There are multiple room settings available, but you really shouldn't need to touch anything other than the room size. 
 Here is a little breakdown of all of them.
 
-* Caption (optional): Room caption is the window title. Engine sets the caption for you to include title and stats, don't edit this option yourself.
-* Size: size of the room in pixels.
-* Speed: Preferred FPS of the room. Fangames usually run at 50.
-* "Persistent" option: If on, when you exit the room it is not completely unloaded, it's state is remembered and gets loaded back when you return. Breaks many things so keep this off.
-* "Clear" option: If on, clears the screen before drawing to it. It should stay on. 
-* Room code (optional): Custom code to execute when room loads.
+* Caption (optional): Sets the title of your game window. However, the engine sets the caption for you already, so there's no reason to change this.
+* Size: size of the room in pixels - the default screen size is 800x608, and it's common to make all rooms some multiple of that amount. At the very least you should keep your sizes a multiple of 32 so no block gets cut in half.
+* Speed: Preferred FPS of the room. Just like the window title, the engine sets the framerate regardless of this option.
+* Persistent: If on, the room doesn't reset when you leave it. This often breaks if it's not specifically designed for, don't use this option unless you know what you are doing.
+* Clear: Technical setting that clears the screen game window every frame. You don't need to touch this.
+* Room code: Custom code to execute every time the room loads.
+
+`[TODO: review the rest]`
 
 ## Sprites - animations, origin
 Sprite usually is an image that object can use as appearance. 
