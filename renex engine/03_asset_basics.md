@@ -132,7 +132,7 @@ Here you can add, edit or delete individual subimages of the sprite, change thei
 `[TODO: verve review the rest]`
 
 ## Backgrounds / tilesets
-Backgrounds assets used as either room backgrounds or tilesets. Using backgrounds as room backgrounds was discussed previosly in Creating your First Room section. Using backgrounds as tilesets can be done in background's properties by checking "Use as Tileset" checkbox and setting up tile splitting.
+Backgrounds can used as either room backgrounds or tilesets. Adding new Backgrounds is the same as adding Sprites. You can setup background for use as tileset in it's properties by checking "Use as Tileset" checkbox and setting up tile splitting.
 
 ## Sounds (Important)
 Sounds in Game Maker 8.2 are slightly different than in other Game Maker versions. You cannot use the legacy Game Maker Sound system, instead renex engine uses newer more robust one.
