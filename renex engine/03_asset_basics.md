@@ -58,7 +58,7 @@ Now edit this specific line so that `global.first_room` gets set to the new room
 
 After that is done, you should be able to hit the green "Run test build" button (or just press `F5`) and after going through the menus you'll see your room in its full glory!
 
-Finally, let's change the bacgkround music played in this room. It is controlled by `MusicPlayer` object, which you may find in the top-left corner of room. You can click on bottom-left corner of the object to edit its fields. 
+Finally, let's change the background music played in this room. It is controlled by `MusicPlayer` object, which you may find in the top-left corner of room. You can click on bottom-left corner of the object to edit its fields. 
 
 Game music is stored in the data folder next to the engine source folder. We'll go into adding your own music later, for now just use one of the example tracks, like `barnicle`. Change the field so it looks like this - notice how the file extension isn't included in the file name:
 
