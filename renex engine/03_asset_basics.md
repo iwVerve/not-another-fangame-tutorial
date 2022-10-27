@@ -129,26 +129,13 @@ The Edit Sprite button opens the sprite editor:
 
 Here you can add, edit or delete individual subimages of the sprite, change their order, add them from a file, as well as preview the sprite animation with the "Show preview" checkbox. You can open each frame to edit it with a simple image editor, or use the effects in the top menu of the window.
 
-`[TODO: review the rest]`
+`[TODO: verve review the rest]`
 
-## Backgrounds - tilesets
-Backgrounds are images that are simply drawn to the screen. They are used in mainly two ways: Tilesets or Actually room backgrounds. Backgrounds cannot be animated and don't have collision. You can also use backgrounds for various props in your room. Using Background as room background was discussed previously, in order to use it as tileset you should also check the "Use as Tileset" checkbox in Background's properties and set up the size of each tile. Other options are useful only if your tiles are not tightly packed together and have space around them. 
+## Backgrounds / tilesets
+Backgrounds assets used as either room backgrounds or tilesets. Using backgrounds as room backgrounds was discussed previosly in Creating your First Room section. Using backgrounds as tilesets can be done in background's properties by checking "Use as Tileset" checkbox and setting up tile splitting.
 
-`[TODO: move or remove (or not do anything) with this guide on how to prop]`
-In order to use background as a static prop, in Room Editor you open Tiles tab, add this background as tile, select whole area as tile region. Now you can place the prop.
-
-### Background Properties
-Creating background or double-clicking existing one will open Background Properties window. From here you can: 
-* Load background from BMP, GIF, JPG, PNG or Game Maker Background format.
-* Save background to Game Maker Background format with all Background properties saved in it.
-* Edit background. This will open image editor, from where you also can save background as PNG.
-
-To use background as tileset, tick the checkbox "Use as tile set" and fill in "tile width" and "tile height" options in opened panel.
-
-## Sounds
-**!IMPORTANT! This section is important!** 
-
-Sounds in Game Maker 8.2 are slightly different than in other Game Maker versions. To play sounds, instead of using Game Maker's built-in sound system, you'd use Game Maker 8.2 Sound extension (which is built-in into Game Maker 8.2 itself, so you don't have to explicitly install it or anything), which allows things like load sounds from files, sound encryption, effects, and many other things. But you cannot use the legacy Game Maker Sound system.
+## Sounds (Important)
+Sounds in Game Maker 8.2 are slightly different than in other Game Maker versions. You cannot use the legacy Game Maker Sound system, instead renex engine uses newer more robust one.
 
 ![](img/03_sound_no.png)
 
@@ -163,26 +150,15 @@ In renex engine you add sounds to your project by putting the sound into respect
 
 **IMPORTANT**: When you finish with your game and Create Executable, you have to copy the `data` folder together with the exe. Otherwise there will be an error prompting you to do so :-)
 
-Playing sounds with the new system is almost no different than using old one. Just instead of specifying sound asset name you specify sound file name (WITHOUT file extension). For example, in `MusicPlayer` object: (it will play the file "barnicle.mod", which you can find in `data/music`):
-
-![](img/03_room_fields2.png)
-
-or in code (it will play the file "sndBlockChange.ogg", which you can find in `data/sounds`):
-
-![](img/03_sound_play_example.png)
-
-
-There are plenty of functions to make sounds sound differently, things like pitch, various effects and many more. They are quite advanced but in case you'll need them, there are some info on how to use them: Game Maker 8.2 Sound extension [readme](https://github.com/GM82Project/gm82snd/blob/master/readme.txt)
+Playing sounds with the new system is almost the same as with old one. Just wherever you would put sound asset name you instead specify sound file name. So, if you look back at Creating your First Room section, where we put `"barnicle"` sound into `MusicPlayer`, "barnicle" is actually a filename of a sound. If you open `data/music`, you'll find here `barnicle.mod` along with some other tracks you also can use. 
 
 ## Engine Settings
-Renex engine is highly customizable, providing you with lots of settings to edit. You can locate them here: 
+Renex engine is highly customizable, providing you with lots of settings to edit. They are located in `engine_settings` script: 
 
 ![](img/03_engine_settings.png)
 
-Those are most important ones:
+Some of these settings you have to edit, so the game works as you want. We have already touched one setting in Creating your First room section, `first_room`. The `engine_settings` contains a lot of settings you can edit, along with explanation of what they do. For your first game you would probably need to edit only those:
 
-`game_title` - change the game title displayed in window title.
+`game_title` - change the title displayed in window title.
 
 `first_room` - change the first room player spawns in.
-
-Other options are thoroughly explained in the mentioned file in comments. Make sure to read it if something works not as you want. 
