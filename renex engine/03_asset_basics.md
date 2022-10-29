@@ -129,18 +129,16 @@ The Edit Sprite button opens the sprite editor:
 
 Here you can add, edit or delete individual subimages of the sprite, change their order, add them from a file, as well as preview the sprite animation with the "Show preview" checkbox. You can open each frame to edit it with a simple image editor, or use the effects in the top menu of the window.
 
-`[TODO: verve review the rest]`
-
 ## Backgrounds / tilesets
-Backgrounds can used as either room backgrounds or tilesets. Adding new Backgrounds is the same as adding Sprites. You can setup background for use as tileset in it's properties by checking "Use as Tileset" checkbox and setting up tile splitting.
+Backgrounds are images that can used as either room backgrounds or tilesets. They are similar to Sprites, and are added similarly, but are simpler in that they can't be animated. You can mark a background to be used as a tileset in its properties by checking the "Use as Tileset" checkbox and setting up the tile splitting.
 
 ## Sounds (Important)
-Sounds in Game Maker 8.2 are slightly different than in other Game Maker versions. You cannot use the legacy Game Maker Sound system, instead renex engine uses newer more robust one.
+Sounds in renex engine are slightly different than in other Game Maker versions. renex engine uses a newer and more robust sound engine that does not use the Game Maker sound assets. This is why the Sounds folder in your project is empty.
 
 ![](img/03_sound_no.png)
 
 ### Adding Sounds
-In renex engine you add sounds to your project by putting the sound into respective folder:
+In renex engine sound effects and music are stored in a separate data folder, with each separated in one of two folders:
 * sounds: `data/sounds` - allowed file extensions: `.mp3`, `.ogg`, `.wav`
 * music: `data/music` - allowed file extensions `.ogg`, `.mp3`, `.mod`, `.s3m`
 
@@ -148,17 +146,16 @@ In renex engine you add sounds to your project by putting the sound into respect
 
 ![](img/03_sound_folder2.png)
 
-**IMPORTANT**: When you finish with your game and Create Executable, you have to copy the `data` folder together with the exe. Otherwise there will be an error prompting you to do so :-)
+**IMPORTANT**: When you export your game, you will have to copy the `data` folder together with the game exe. Otherwise there will be an error prompting you to do so :-)
 
-Playing sounds with the new system is almost the same as with old one. Just wherever you would put sound asset name you instead specify sound file name. So, if you look back at Creating your First Room section, where we put `"barnicle"` sound into `MusicPlayer`, "barnicle" is actually a filename of a sound. If you open `data/music`, you'll find here `barnicle.mod` along with some other tracks you also can use. 
+The most notable difference with the new sound system is that sounds and music are referred to by their file name in a string. Where in other engines you would use something like `musBarnicle`, having that be a sound asset in your project, in renex engine you use `"barnicle"`, referring to `barnicle.mod` in the music folder. 
 
 ## Engine Settings
-Renex engine is highly customizable, providing you with lots of settings to edit. They are located in `engine_settings` script: 
+renex engine is highly customizable, providing you with lots of settings to edit. They are located in the `engine_settings` script: 
 
 ![](img/03_engine_settings.png)
 
-Some of these settings you have to edit, so the game works as you want. We have already touched one setting in Creating your First room section, `first_room`. The `engine_settings` contains a lot of settings you can edit, along with explanation of what they do. For your first game you would probably need to edit only those:
+These are settings that modify various behavior of your game. We've already touched one setting when creating our first room in the first half of this chapter, by changing the `first_room` setting. The settings all come with comments explaining what they do. For your first game you probably only need to edit a couple:
 
-`game_title` - change the title displayed in window title.
-
-`first_room` - change the first room player spawns in.
+- `game_title` - the name of the game displayed in the window title.
+- `first_room` - the first room that the game starts in.
